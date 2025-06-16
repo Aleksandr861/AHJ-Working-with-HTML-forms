@@ -1,5 +1,5 @@
-import Button from '../components/button/Button';
-import Popover from '../components/popover/Popover';
+import Button from '../components/button/button';
+import Popover from '../components/popover/popover';
 
 export default class App {
     constructor() {
