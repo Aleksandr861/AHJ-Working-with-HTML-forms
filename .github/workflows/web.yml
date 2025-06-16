@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: AHJ-Working-with-HTML-forms
 
 on:
   push:
@@ -17,6 +17,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
@@ -24,13 +25,17 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Set Git user
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "action@github.com"
+      - name: Lint code
+        run: npm run lint
+
+      - name: Run tests
+        run: npm run test
 
       - name: Deploy to GitHub Pages
         env:
-          GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
-          npx gh-pages -d dist -t true
+          git config --global user.name "Aleksandr Mamontov"
+          git config --global user.email "mamont861@yandex.ru"
+          git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/Aleksandr861/AHJ-Working-with-HTML-forms.git
+          npx gh-pages -d dist -u "GitHub Actions <action@github.com>"
