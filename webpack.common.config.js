@@ -48,7 +48,7 @@ module.exports = {
             patterns: [
                 {
                     from: 'LICENSE', to: 'LICENSE'
-                } 
+                }
             ],
         }),
     ],
