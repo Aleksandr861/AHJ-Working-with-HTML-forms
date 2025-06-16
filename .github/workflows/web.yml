@@ -24,11 +24,13 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        if: success()
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Set Git user
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "action@github.com"
+
+      - name: Deploy to GitHub Pages
+        env:
+          GH_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        run: |
           npx gh-pages -d dist -t true
