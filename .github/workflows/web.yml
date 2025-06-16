@@ -38,4 +38,4 @@ jobs:
           git config --global user.name "Aleksandr Mamontov"
           git config --global user.email "mamont861@yandex.ru"
           git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/Aleksandr861/AHJ-Working-with-HTML-forms.git
-          npx gh-pages -d dist --branch gh-pages "GitHub Actions <action@github.com>"
+          npx gh-pages -d dist -u "GitHub Actions <action@github.com>"
