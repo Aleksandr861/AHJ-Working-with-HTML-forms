@@ -1,17 +1,16 @@
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    output: { clean: true, },
+    output: { clean: true },
     module: {
         rules: [
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: { loader: 'babel-loader', },
+                use: { loader: 'babel-loader' },
             },
             {
                 test: /\.css$/,
@@ -21,12 +20,12 @@ module.exports = {
             },
             {
                 test: /\.html$/,
-                use: [ { loader: 'html-loader', }, ],
+                use: [{ loader: 'html-loader' }],
             },
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
-                generator: { filename: 'img/[name][ext][query]', },
+                generator: { filename: 'img/[name][ext][query]' },
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/i,
@@ -48,6 +47,9 @@ module.exports = {
             patterns: [
                 {
                     from: 'LICENSE', to: 'LICENSE'
+                },
+                {
+                    from: 'pic/popover.png', to: 'pic/popover.png' // копируем popover.png в dist/pic
                 }
             ],
         }),
